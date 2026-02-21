@@ -6,7 +6,7 @@ import Navbar from "./navBar";
 
 
 export const metadata: Metadata = {
-  title: "WebPage",
+  title: "The Meat Emporium SmithField",
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
@@ -16,7 +16,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <style>{`:root{--header:60px;--tabs:60px;}`}</style>
+        <style>{`:root{--header:150px;--tabs:60px;}`}</style>
         <style>{`
           html, body {
             background-color: var(--bodyBackground, #ffffff);
@@ -84,7 +84,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                 alignItems: "center",
               }}
             >
-              <span>WebPage</span>
+              <span>The Meat Emporium SmithField</span>
               <span>&copy; {currentYear}</span>
               <span suppressHydrationWarning>{currentDate}</span>
             </div>
