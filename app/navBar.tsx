@@ -20,7 +20,7 @@ export default function NavBar() {
 
     const root = document.documentElement;
 
-    root.style.setProperty('--header', '150px');
+    root.style.setProperty('--header', '200px');
     root.style.setProperty('--tabs', '60px');
 
     root.style.setProperty('--dropDown',  darkMode ? '#1b1b1b' : '#f9f9f9');
@@ -47,7 +47,7 @@ export default function NavBar() {
     { label: 'Specialty Meats', href: '/specialtyMeats' },
     { label: 'Wholesale', href: '/wholesale' },
     { label: 'Retail', href: '/retail' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Contact', href: '/#contact' },
   ];
 
   const closeMenu = () => setIsOpen(false);
@@ -58,21 +58,17 @@ export default function NavBar() {
 
       <header className={styles.header} role="banner">
 
-        <Link href="/" className={styles.logo}>
-          <Image
-            src="/images/logo.png"
-            alt="The Meat Emporium Smithfield Logo"
-            width={0}
-            height={0}
-            sizes="100vw"
-            className={styles.logoImage}
-            priority
-          />
-        </Link>
-
-        <span className={styles.title}>
-          The Meat Emporium SmithField
-        </span>
+        <Link href="/" className={styles.title}>
+  <Image
+    src="/images/fullLogo.png"
+    alt="The Meat Emporium Smithfield Logo"
+    width={0}
+    height={0}
+    sizes="300vw"
+    className={styles.logoImage}
+    priority
+  />
+</Link>
 
       </header>
 

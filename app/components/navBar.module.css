@@ -1,5 +1,6 @@
 .header {
   position: fixed;
+  overflow: hidden;
   width: 100%;
   height: var(--header);
   display: flex; 
@@ -16,18 +17,25 @@
   position: absolute;
   left: 20px; 
   top: 50%; 
-  transform: 
-  translateY(-50%);
+  transform: translateY(-50%);
   font-size: 16px; 
 }
 
 .title {
-  text-align: center;
+  flex-grow: 1;          /* Take all remaining horizontal space */
+  display: flex;         /* Use flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  max-width: 100%;       /* Prevent overflow */
 }
 
 .logoImage {
-  height: 150px;
-  width: auto;
+  margin-top: 30px;
+  max-height: 520px;   /* Or whatever fits your header height */
+  max-width: 100%;     /* Allow horizontal growth */
+  height: auto;        /* Let height scale based on width */
+  width: 100%;         /* Fill container width */
+  object-fit: contain; /* Keep aspect ratio and no cropping */
 }
 .topRow {
   position: fixed;
@@ -55,8 +63,8 @@
   display: flex; 
   align-items: center; 
   justify-content: center;
-  width: 110px; 
-  height: 40px; 
+  width: 130px; 
+  height: 48px; 
   border-radius: 6px;
   font-weight: 700;
   background: var(--tabColour);
@@ -229,4 +237,8 @@
 .icon:hover {
   color: gold;
   transform: scale(1.1);
+}
+
+html {
+  scroll-behavior: smooth;
 }

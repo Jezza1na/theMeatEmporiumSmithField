@@ -4,7 +4,6 @@ import "./globals.css";
 
 import Navbar from "./navBar";
 
-
 export const metadata: Metadata = {
   title: "The Meat Emporium SmithField",
 };
@@ -13,12 +12,23 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const currentDate = new Date().toLocaleDateString();
   const currentYear = new Date().getFullYear();
 
+  const styles = {
+    footer: {
+      padding: "1.5rem 0",
+      backgroundColor: "#000",
+      color: "#fff",
+      textAlign: "center" as const,
+    },
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <style>{`:root{--header:150px;--tabs:60px;}`}</style>
         <style>{`
           html, body {
+            margin: 0;
+            padding: 0;
             background-color: var(--bodyBackground, #ffffff);
             color: var(--textColour, #212529);
           }
@@ -71,23 +81,8 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             {children}
           </main>
 
-          <footer
-            style={{
-              marginTop: "auto",
-              borderTop: "1px solid var(--bodyBackgroundBorder)",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <span>The Meat Emporium SmithField</span>
-              <span>&copy; {currentYear}</span>
-              <span suppressHydrationWarning>{currentDate}</span>
-            </div>
+          <footer style={styles.footer}>
+            © {currentYear} The Meat Emporium Smithfield
           </footer>
         </div>
       </body>
