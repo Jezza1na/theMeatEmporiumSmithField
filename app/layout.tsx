@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
-
-import Navbar from "./navBar";
+import Header from "./components/header";
+import Navbar from "./components/navBar";
 
 export const metadata: Metadata = {
   title: "The Meat Emporium SmithField",
@@ -61,31 +61,31 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       </head>
 
       <body>
-        <div
-          style={{
-            minHeight: "100vh",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <Navbar />
+  <div
+    style={{
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column",
+    }}
+  >
+    <Header />   {/* 👈 NOT sticky */}
+    <Navbar />   {/* 👈 sticky */}
 
-          <main
-            style={{
-              flexGrow: 1,
-              paddingTop: "calc(var(--header) + var(--tabs))",
-              paddingLeft: 20,
-              paddingRight: 20,
-            }}
-          >
-            {children}
-          </main>
+    <main
+      style={{
+        flexGrow: 1,
+        paddingLeft: 20,
+        paddingRight: 20,
+      }}
+    >
+      {children}
+    </main>
 
-          <footer style={styles.footer}>
-            © {currentYear} The Meat Emporium Smithfield
-          </footer>
-        </div>
-      </body>
+    <footer style={styles.footer}>
+      © {currentYear} The Meat Emporium Smithfield
+    </footer>
+  </div>
+</body>
     </html>
   );
 };

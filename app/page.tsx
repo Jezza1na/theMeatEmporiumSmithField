@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import ClientLayout from '@/app/ClientLayout';
 import Image from 'next/image';
 
 export default function Home() {
@@ -16,7 +15,7 @@ export default function Home() {
   }, []);
 
   return (
-    <ClientLayout>
+    <>
       {/* HERO IMAGE */}
       <div
         style={{
@@ -69,7 +68,6 @@ export default function Home() {
 
       {/* PARALLAX PHOTO BACKGROUND */}
       <section style={styles.parallaxSection}>
-
         <div style={styles.overlayBlock}>
           <h2>Fresh Daily</h2>
           <p>Put more writing here</p>
@@ -88,13 +86,11 @@ export default function Home() {
           <h2>Wholesale Ready</h2>
           <p>Even more content</p>
         </div>
-
       </section>
 
       {/* 3 LINKED IMAGE ROW */}
       <section style={styles.linkSection}>
         <div style={styles.linkGrid}>
-
           <a href="/specialtyMeats" style={styles.linkCard}>
             <Image
               src="/images/photo1.png"
@@ -130,51 +126,48 @@ export default function Home() {
               <h2>Wholesale</h2>
             </div>
           </a>
-
         </div>
       </section>
 
       {/* CONTACT SECTION FULL WIDTH */}
-<section id="contact" style={styles.contactSection}>
+      <section id="contact" style={styles.contactSection}>
+        <div style={styles.contactContent}>
+          <h2 style={styles.contactTitle}>Get in Touch</h2>
 
-  <div style={styles.contactContent}>
+          <ul style={styles.contactList}>
+            <li style={styles.contactItem}>
+              <strong>Phone:</strong>{' '}
+              <a href="tel:+1234567890" style={styles.contactLink}>
+                +1 (234) 567-890
+              </a>
+            </li>
 
-    <h2 style={styles.contactTitle}>Get in Touch</h2>
+            <li style={styles.contactItem}>
+              <strong>Email:</strong>{' '}
+              <a href="mailto:contact@meatemporium.com" style={styles.contactLink}>
+                contact@meatemporium.com
+              </a>
+            </li>
 
-    <ul style={styles.contactList}>
+            <li style={styles.contactItem}>
+              <strong>Address:</strong> 123 Butcher St, Smithfield, USA
+            </li>
 
-      <li style={styles.contactItem}>
-        <strong>Phone:</strong> <a href="tel:+1234567890" style={styles.contactLink}>+1 (234) 567-890</a>
-      </li>
-
-      <li style={styles.contactItem}>
-        <strong>Email:</strong> <a href="mailto:contact@meatemporium.com" style={styles.contactLink}>contact@meatemporium.com</a>
-      </li>
-
-      <li style={styles.contactItem}>
-        <strong>Address:</strong> 123 Butcher St, Smithfield, USA
-      </li>
-
-      <li style={styles.contactItem}>
-        <strong>Hours:</strong> Mon - Fri, 9am - 6pm
-      </li>
-
-    </ul>
-
-  </div>
-
-</section>
-    </ClientLayout>
+            <li style={styles.contactItem}>
+              <strong>Hours:</strong> Mon - Fri, 9am - 6pm
+            </li>
+          </ul>
+        </div>
+      </section>
+    </>
   );
 }
 
 const styles = {
-
   heroWrap: {
     position: 'relative' as const,
     width: '100%',
     height: '60vh',
-    marginTop: '5vh',
     overflow: 'hidden',
   },
 
@@ -273,46 +266,46 @@ const styles = {
     letterSpacing: '1px',
   },
 
-contactSection: {
-  position: 'relative' as const,
-  left: '50%',
-  right: '50%',
-  marginLeft: '-50vw',
-  marginRight: '-50vw',
-  width: '100vw',
-  padding: '4rem',
-  backgroundColor: '#000000',
-  color: '#fff',
-  textAlign: 'center' as const,
-  boxSizing: 'border-box' as const,
-},
+  contactSection: {
+    position: 'relative' as const,
+    left: '50%',
+    right: '50%',
+    marginLeft: '-50vw',
+    marginRight: '-50vw',
+    width: '100vw',
+    padding: '4rem',
+    backgroundColor: '#000000',
+    color: '#fff',
+    textAlign: 'center' as const,
+    boxSizing: 'border-box' as const,
+  },
 
-contactContent: {
-  maxWidth: '600px',   // content width stays limited
-  margin: '0 auto',    // centers it horizontally
-  padding: '0 1rem',   // optional: prevent tiny overflow on very small screens
-},
+  contactContent: {
+    maxWidth: '600px',
+    margin: '0 auto',
+    padding: '0 1rem',
+  },
 
-contactTitle: {
-  fontSize: '2.5rem',
-  marginBottom: '2rem',
-  fontWeight: 700,
-},
+  contactTitle: {
+    fontSize: '2.5rem',
+    marginBottom: '2rem',
+    fontWeight: 700,
+  },
 
-contactList: {
-  listStyle: 'none',
-  padding: 0,
-  margin: 0,
-  fontSize: '1.25rem',
-  lineHeight: 1.8,
-},
+  contactList: {
+    listStyle: 'none',
+    padding: 0,
+    margin: 0,
+    fontSize: '1.25rem',
+    lineHeight: 1.8,
+  },
 
-contactItem: {
-  marginBottom: 0,
-},
+  contactItem: {
+    marginBottom: 0,
+  },
 
-contactLink: {
-  color: '#6ab0ff',
-  textDecoration: 'none',
-},
+  contactLink: {
+    color: '#6ab0ff',
+    textDecoration: 'none',
+  },
 };

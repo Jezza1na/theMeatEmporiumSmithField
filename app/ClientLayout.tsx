@@ -28,22 +28,9 @@ export default function ClientLayout({ children }: Props) {
   }, [pathname]);
 
   return (
-    <div
-      style={{
-        position: 'relative',
-        minHeight: '100vh',
-        paddingBottom: 0,
-        background: 'var(--bodyBackground)',
-        color: 'var(--textColour)',
-      }}
-    >
-      <main style={{ 
-        paddingLeft: 20, 
-        paddingRight: 20 
-        }}>
-        {children}
-      </main>
-      <CookieConsent />
-    </div>
-  );
+  <>
+    {children}
+    <CookieConsent />
+  </>
+);
 }
