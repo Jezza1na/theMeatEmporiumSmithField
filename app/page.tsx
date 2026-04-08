@@ -7,10 +7,7 @@ export default function Home() {
   const [heroVisible, setHeroVisible] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setHeroVisible(true);
-    }, 1000);
-
+    const timer = setTimeout(() => setHeroVisible(true), 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -38,274 +35,177 @@ export default function Home() {
 
       {/* HUGE TITLE */}
       <section style={styles.titleSection}>
-        <h1 style={styles.bigTitle}>
-          The Meat Emporium SmithField
-        </h1>
+        <h1 style={styles.bigTitle}>The Meat Emporium SmithField</h1>
       </section>
 
       {/* 4 COLUMNS */}
-      <section style={styles.fourGrid}>
-        <div style={styles.card}>
-          <h2 style={styles.cardTitle}>Local</h2>
-          <p>Add text about locally sourced meats here.</p>
-        </div>
+<section style={styles.fourGrid}>
+  {[
+    { title: 'Local', text: 'Add text about locally sourced meats here.' },
+    { title: 'Specialty', text: 'Add text about rare cuts or specialty items.' },
+    { title: 'Quality', text: 'Add text about your quality standards.' },
+    { title: 'Availability', text: 'Add text about stock & supply.' },
+  ].map((item, idx) => (
+    <div key={idx} style={styles.card}>
+      <h2 style={styles.cardTitle}>{item.title}</h2>
+      <p>{item.text}</p>
+    </div>
+  ))}
+</section>
 
-        <div style={styles.card}>
-          <h2 style={styles.cardTitle}>Specialty</h2>
-          <p>Add text about rare cuts or specialty items.</p>
-        </div>
-
-        <div style={styles.card}>
-          <h2 style={styles.cardTitle}>Quality</h2>
-          <p>Add text about your quality standards.</p>
-        </div>
-
-        <div style={styles.card}>
-          <h2 style={styles.cardTitle}>Availability</h2>
-          <p>Add text about stock & supply.</p>
-        </div>
-      </section>
-
-      {/* PARALLAX PHOTO BACKGROUND */}
+      {/* PARALLAX */}
       <section style={styles.parallaxSection}>
-        <div style={styles.overlayBlock}>
-          <h2>Fresh Daily</h2>
-          <p>Put more writing here</p>
-        </div>
-
-        <div style={styles.spacer} />
-
-        <div style={styles.overlayBlock}>
-          <h2>Premium Cuts</h2>
-          <p>More content here</p>
-        </div>
-
-        <div style={styles.spacer} />
-
-        <div style={styles.overlayBlock}>
-          <h2>Wholesale Ready</h2>
-          <p>Even more content</p>
-        </div>
+        {['Fresh Daily', 'Premium Cuts', 'Wholesale Ready'].map((heading, idx) => (
+          <>
+            <div key={idx} style={styles.overlayBlock}>
+              <h2>{heading}</h2>
+              <p>Put more writing here</p>
+            </div>
+            {idx < 2 && <div style={styles.spacer} />}
+          </>
+        ))}
       </section>
 
-      {/* 3 LINKED IMAGE ROW */}
+      {/* 3 LINKS */}
       <section style={styles.linkSection}>
         <div style={styles.linkGrid}>
-          <a href="/specialtyMeats" style={styles.linkCard}>
-            <Image
-              src="/images/photo1.png"
-              alt="Specialty Meats"
-              fill
-              style={styles.linkImage}
-            />
-            <div style={styles.linkOverlay}>
-              <h2>Specialty Meats</h2>
-            </div>
-          </a>
-
-          <a href="/retail" style={styles.linkCard}>
-            <Image
-              src="/images/photo1.png"
-              alt="Retail"
-              fill
-              style={styles.linkImage}
-            />
-            <div style={styles.linkOverlay}>
-              <h2>Retail</h2>
-            </div>
-          </a>
-
-          <a href="/wholesale" style={styles.linkCard}>
-            <Image
-              src="/images/photo1.png"
-              alt="Wholesale"
-              fill
-              style={styles.linkImage}
-            />
-            <div style={styles.linkOverlay}>
-              <h2>Wholesale</h2>
-            </div>
-          </a>
+          {[
+            { href: '/specialtyMeats', title: 'Specialty Meats' },
+            { href: '/retail', title: 'Retail' },
+            { href: '/wholesale', title: 'Wholesale' },
+          ].map((item, idx) => (
+            <a key={idx} href={item.href} style={styles.linkCard}>
+              <Image src="/images/photo1.png" alt="" fill style={styles.linkImage} />
+              <div style={styles.linkOverlay}>
+                <h2>{item.title}</h2>
+              </div>
+            </a>
+          ))}
         </div>
       </section>
 
-      {/* CONTACT SECTION FULL WIDTH */}
+      {/* CONTACT */}
       <section id="contact" style={styles.contactSection}>
-        <div style={styles.contactContent}>
-          <h2 style={styles.contactTitle}>Get in Touch</h2>
+        <div style={styles.contactRow}>
+          {/* LEFT IMAGE */}
+          <div style={styles.sideImage}>
+            <a href="https://specialtymeatssmithfield.com.au" target="_blank" rel="noopener noreferrer">
+              <Image src="/images/specialtyMeatsLittleLogo.png" alt="Left" fill style={{ ...styles.sideImageImg, cursor: 'pointer' }} />
+            </a>
+          </div>
 
-          <ul style={styles.contactList}>
-            <li style={styles.contactItem}>
-              <strong>Phone:</strong>{' '}
-              <a href="tel:+1234567890" style={styles.contactLink}>
-                +1 (234) 567-890
-              </a>
-            </li>
+          {/* CENTER */}
+          <div style={styles.contactContent}>
+            <h2 style={styles.contactTitle}>Get in Touch</h2>
+            <ul style={styles.contactList}>
+              <li style={styles.contactItem}><strong>Phone:</strong> <a href="tel:+61740481124" style={styles.contactLink}>(07) 4048 1124</a></li>
+              <li style={styles.contactItem}><strong>Email:</strong> <a href="mailto:Shawn.pynaker@gmail.com" style={styles.contactLink}>Shawn.pynaker@gmail.com</a></li>
+              <li style={styles.contactItem}><strong>Address:</strong> 2 Mac Peak Cres, Smithfield QLD 4878</li>
+              <li style={styles.contactItem}>
+                <strong>Hours:</strong>
+                <div>Mon - Fri, 9:00am - 5:30pm</div>
+                <div>Sat & Sun, 9:00am - 4:00pm</div>
+              </li>
+            </ul>
+          </div>
 
-            <li style={styles.contactItem}>
-              <strong>Email:</strong>{' '}
-              <a href="mailto:contact@meatemporium.com" style={styles.contactLink}>
-                contact@meatemporium.com
-              </a>
-            </li>
-
-            <li style={styles.contactItem}>
-              <strong>Address:</strong> 123 Butcher St, Smithfield, USA
-            </li>
-
-            <li style={styles.contactItem}>
-              <strong>Hours:</strong> Mon - Fri, 9am - 6pm
-            </li>
-          </ul>
+          {/* RIGHT IMAGE */}
+          <div style={styles.sideImage}>
+            <a href="https://themeatemporiumsmithfield.com.au" target="_blank" rel="noopener noreferrer">
+              <Image src="/images/meatEmporiumLittleLogo.png" alt="Right" fill style={{ ...styles.sideImageImg, cursor: 'pointer' }} />
+            </a>
+          </div>
         </div>
       </section>
     </>
   );
 }
 
-const styles = {
-  heroWrap: {
-    position: 'relative' as const,
-    width: '100%',
-    height: '60vh',
-    overflow: 'hidden',
-  },
+const styles: { [key: string]: any } = {
+  // HERO
+  heroWrap: { position: 'relative', width: '100%', height: '60vh', overflow: 'hidden' },
+  heroImage: { objectFit: 'cover' },
 
-  heroImage: {
-    objectFit: 'cover' as const,
-  },
+  // TITLE
+  titleSection: { height: '40vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 1rem' },
+  bigTitle: { fontSize: 'clamp(2rem, 6vw, 5rem)', fontWeight: 900, textAlign: 'center' },
 
-  titleSection: {
-    height: '40vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  bigTitle: {
-    fontSize: '5rem',
-    fontWeight: 900,
-    textAlign: 'center' as const,
-  },
-
+  // 4 CARDS
   fourGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
     gap: '2rem',
-    padding: '4rem',
+    padding: '4rem 2rem',
   },
-
   card: {
     padding: '2rem',
     border: '1px solid gold',
     textAlign: 'center' as const,
+    boxSizing: 'border-box' as const,
   },
+  cardTitle: { fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 800, marginBottom: '1rem' },
 
-  cardTitle: {
-    fontSize: '2rem',
-    fontWeight: 800,
-    marginBottom: '1rem',
-  },
+  // PARALLAX
+  parallaxSection: { backgroundImage: 'url(/images/photo1.png)', backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center', padding: '6rem 2rem' },
+  overlayBlock: { background: 'rgba(0,0,0,0.7)', color: 'white', padding: '2rem', maxWidth: '500px', margin: '0 auto 6rem', textAlign: 'center' },
+  spacer: { height: '300px' },
 
-  parallaxSection: {
-    backgroundImage: 'url(/images/photo1.png)',
-    backgroundAttachment: 'fixed',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    padding: '6rem 2rem',
-  },
+  // 3 LINKS
+  linkSection: { padding: '6rem 2rem' },
+  linkGrid: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' },
+  linkCard: { position: 'relative', width: '100%', aspectRatio: '16/9', borderRadius: '10px', overflow: 'hidden', textDecoration: 'none' },
+  linkImage: { objectFit: 'cover' },
+  linkOverlay: { position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.5)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 800 },
 
-  overlayBlock: {
-    background: 'rgba(0,0,0,0.7)',
-    color: 'white',
-    padding: '2rem',
-    maxWidth: '500px',
-    margin: '0 auto',
-    marginBottom: '6rem',
-    textAlign: 'center' as const,
-  },
-
-  spacer: {
-    height: '300px',
-  },
-
-  linkSection: {
-    padding: '6rem 4rem',
-  },
-
-  linkGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '2rem',
-  },
-
-  linkCard: {
-    position: 'relative' as const,
-    height: '350px',
-    overflow: 'hidden',
-    borderRadius: '10px',
-    cursor: 'pointer',
-    textDecoration: 'none',
-  },
-
-  linkImage: {
-    objectFit: 'cover' as const,
-    transition: 'transform 0.6s ease',
-  },
-
-  linkOverlay: {
-    position: 'absolute' as const,
-    inset: 0,
-    background: 'rgba(0,0,0,0.5)',
-    color: 'white',
+  // CONTACT
+  contactSection: { position: 'relative', left: '50%', right: '50%', marginLeft: '-50vw', marginRight: '-50vw', width: '100vw', padding: '4rem', backgroundColor: '#000', color: '#fff', boxSizing: 'border-box' },
+  contactRow: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '2rem',
-    fontWeight: 800,
-    letterSpacing: '1px',
+    gap: '40px',
+    flexWrap: 'wrap',
+    flexDirection: 'row', // desktop default
   },
+  sideImage: { position: 'relative', width: '250px', height: '250px', borderRadius: '12px', overflow: 'hidden' },
+  sideImageImg: { objectFit: 'cover' },
+  contactContent: { maxWidth: '600px', textAlign: 'center' },
+  contactTitle: { fontSize: 'clamp(1.5rem, 5vw, 2.5rem)', marginBottom: '2rem' },
+  contactList: { listStyle: 'none', padding: 0, margin: 0, fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', lineHeight: 1.8 },
+  contactItem: { marginBottom: '12px' },
+  contactLink: { color: '#6ab0ff', textDecoration: 'none' },
 
-  contactSection: {
-    position: 'relative' as const,
-    left: '50%',
-    right: '50%',
-    marginLeft: '-50vw',
-    marginRight: '-50vw',
-    width: '100vw',
-    padding: '4rem',
-    backgroundColor: '#000000',
-    color: '#fff',
-    textAlign: 'center' as const,
-    boxSizing: 'border-box' as const,
+  // ===== RESPONSIVE MEDIA QUERIES =====
+  '@media (max-width: 1200px)': {
+    fourGrid: { gridTemplateColumns: 'repeat(2, 1fr)', padding: '2rem' },
+    linkGrid: { gridTemplateColumns: 'repeat(2, 1fr)' },
+    sideImage: { width: '200px', height: '200px' },
   },
-
-  contactContent: {
-    maxWidth: '600px',
-    margin: '0 auto',
-    padding: '0 1rem',
+  '@media (max-width: 768px)': {
+    fourGrid: { gridTemplateColumns: '1fr 1fr', gap: '1rem', padding: '1rem' },
+    card: { padding: '1rem' },
+    linkGrid: { gridTemplateColumns: '1fr', gap: '1.5rem' },
+    linkCard: { aspectRatio: '4/3', width: '100%' }, // bigger for phones
+    contactRow: { flexDirection: 'column', gap: '20px' },
+    sideImage: { width: '180px', height: '180px' }, // slightly bigger
+    contactContent: { maxWidth: '90%' },
+    overlayBlock: { maxWidth: '90%', marginBottom: '3rem' },
+    spacer: { height: '150px' },
   },
-
-  contactTitle: {
-    fontSize: '2.5rem',
-    marginBottom: '2rem',
-    fontWeight: 700,
+  '@media (max-width: 480px)': {
+  linkGrid: {
+    gridTemplateColumns: '1fr', // 1 per row
+    gap: '1.5rem',
   },
-
-  contactList: {
-    listStyle: 'none',
-    padding: 0,
-    margin: 0,
-    fontSize: '1.25rem',
-    lineHeight: 1.8,
+  linkCard: {
+    width: '100%',
+    height: '300px',       // <-- explicit height forces bigger images
+    minHeight: '250px',    // fallback
+    borderRadius: '12px',
+    overflow: 'hidden',
   },
-
-  contactItem: {
-    marginBottom: 0,
+  linkOverlay: {
+    fontSize: 'clamp(1.2rem, 5vw, 1.5rem)',
   },
-
-  contactLink: {
-    color: '#6ab0ff',
-    textDecoration: 'none',
   },
-};
+}

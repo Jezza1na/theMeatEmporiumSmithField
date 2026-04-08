@@ -8,7 +8,7 @@ export default function Header() {
     <header className={styles.header} role="banner">
       <Link href="/" className={styles.title}>
         <Image
-          src="/images/fullLogo.png"
+          src="/images/GoldLogoTheMeatEmporiumBanner.png"
           alt="The Meat Emporium Smithfield Logo"
           width={0}
           height={0}

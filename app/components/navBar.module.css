@@ -7,15 +7,53 @@
   align-items: center;
   justify-content: center;
   background: var(--headerBackground);
-  overflow: hidden;  /* prevent logo overflow */
+  overflow: hidden;
 }
 /* LOGO */
+/* Default (desktop) */
 .logoImage {
-  max-height: 100%;   /* ✅ never exceed header height */
-  max-width: 100%;
   width: auto;
   height: auto;
+  max-width: 60%;
+  max-height: 220px;
   object-fit: contain;
+  margin-top: 20px; /* adjust vertical position */
+}
+
+/* Large laptops/desktops */
+@media (max-width: 1440px) {
+  .logoImage {
+    max-width: 50%;
+    max-height: 200px;
+    margin-top: 15px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .logoImage {
+    max-width: 60%;
+    max-height: 180px;
+    margin-top: 10px;
+  }
+}
+
+/* Small tablets / large phones */
+@media (max-width: 768px) {
+  .logoImage {
+    max-width: 70%;
+    max-height: 150px;
+    margin-top: 5px;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .logoImage {
+    max-width: 90%;
+    max-height: 120px;
+    margin-top: 0px;
+  }
 }
 
 .title {
@@ -26,14 +64,6 @@
   max-width: 100%;
 }
 
-.logoImage {
-  margin-top: 30px;
-  max-height: 520px;
-  max-width: 100%;
-  height: auto;
-  width: 100%;
-  object-fit: contain;
-}
 
 /* NAVBAR */
 .topRow {

@@ -21,7 +21,6 @@ const imagesRow2 = [
 export default function Contact() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Disable scroll + hide layout when modal is open
   useEffect(() => {
     if (selectedImage) {
       document.body.style.overflow = 'hidden';
@@ -30,7 +29,6 @@ export default function Contact() {
     }
   }, [selectedImage]);
 
-  // Close on ESC
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setSelectedImage(null);
@@ -88,10 +86,26 @@ export default function Contact() {
             </div>
           </div>
 
+          {/* ✅ SPECIALTY MEATS BOXES — CENTERED */}
+<div className="max-w-6xl mx-auto mt-16 px-4 flex justify-center">
+  <div className="bg-[var(--rows)] border border-[var(--bodyBackgroundBorder)] rounded-xl p-6 shadow-lg text-center w-full md:w-2/3">
+    <h3 className="text-xl font-semibold mb-4">Specialty Meats</h3>
+    <ul className="list-disc list-inside space-y-1 text-left">
+      <li>Goat / Chevon</li>
+      <li>Venison</li>
+      <li>Rabbit</li>
+      <li>Game Birds: Quail, Pheasant, Partridge</li>
+      <li>Kangaroo</li>
+      <li>Offal / Organ Meats: Liver, Kidney, Heart, Tongue, Tripe</li>
+      <li>Pets Food</li>
+    </ul>
+  </div>
+</div>
+
         </section>
       </ClientLayout>
 
-      {/* FULLSCREEN MODAL — OUTSIDE ClientLayout */}
+      {/* MODAL */}
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black z-[9999] flex items-center justify-center"

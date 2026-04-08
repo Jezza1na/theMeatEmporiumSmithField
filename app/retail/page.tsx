@@ -21,7 +21,6 @@ const imagesRow2 = [
 export default function Contact() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Disable scroll + hide layout when modal is open
   useEffect(() => {
     if (selectedImage) {
       document.body.style.overflow = 'hidden';
@@ -30,7 +29,6 @@ export default function Contact() {
     }
   }, [selectedImage]);
 
-  // Close on ESC
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setSelectedImage(null);
@@ -88,10 +86,67 @@ export default function Contact() {
             </div>
           </div>
 
+          {/* IN-STORE ITEMS — BOXES WITH CENTERED TITLES */}
+          <div className="max-w-6xl mx-auto mt-16 px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              
+              {/* Beef */}
+              <div className="bg-[var(--rows)] border border-[var(--bodyBackgroundBorder)] rounded-xl p-6 shadow-lg text-center">
+                <h2 className="text-2xl font-semibold mb-4">Beef</h2>
+                <ul className="list-disc list-inside text-left space-y-1">
+                  <li><strong>Steaks:</strong> Scotch, T-Bone, Porterhouse, Eye Fillet, Rump, Chuck</li>
+                  <li><strong>Roasts:</strong> Brisket, Topside</li>
+                  <li><strong>Other Cuts:</strong> Short Ribs, Flank, Skirt, Shank, Oxtail, Beef Cheeks</li>
+                  <li><strong>Minced/Ground:</strong> Regular Ground Beef, Lean Ground Beef, Mince for Burgers</li>
+                  <li><strong>Specialty:</strong> Corned Beef, Beef Bones</li>
+                </ul>
+              </div>
+
+              {/* Lamb */}
+              <div className="bg-[var(--rows)] border border-[var(--bodyBackgroundBorder)] rounded-xl p-6 shadow-lg text-center">
+                <h2 className="text-2xl font-semibold mb-4">Lamb</h2>
+                <ul className="list-disc list-inside text-left space-y-1">
+                  <li><strong>Chops:</strong> Loin Chops, Shoulder Chops</li>
+                  <li><strong>Roasts:</strong> Leg of Lamb, Shoulder Roast, Rack of Lamb</li>
+                  <li><strong>Other Cuts:</strong> Neck, Shank, Rump, Belly</li>
+                  <li><strong>Ground/Minced:</strong> Lamb Mince</li>
+                  <li><strong>Specialty:</strong> Lamb Bones (for stock), Brain, Heart</li>
+                </ul>
+              </div>
+
+              {/* Pork */}
+              <div className="bg-[var(--rows)] border border-[var(--bodyBackgroundBorder)] rounded-xl p-6 shadow-lg text-center">
+                <h2 className="text-2xl font-semibold mb-4">Pork</h2>
+                <ul className="list-disc list-inside text-left space-y-1">
+                  <li><strong>Roasts:</strong> Shoulder, Pork Loin Roast, Pork Belly, Ham</li>
+                  <li><strong>Chops:</strong> Loin Chop</li>
+                  <li><strong>Ribs:</strong> Spare Ribs, Baby Back Ribs</li>
+                  <li><strong>Tenderloin</strong></li>
+                  <li><strong>Other Cuts:</strong> Pork Hock, Pork Neck/Collar, Feet, Pork Bones</li>
+                  <li><strong>Mince/Ground:</strong> Plain ground pork, or mixed for sausages, meatballs, dumplings</li>
+                  <li><strong>Smallgoods:</strong> Bacon, Sausages</li>
+                </ul>
+              </div>
+
+              {/* Chicken / Poultry */}
+              <div className="bg-[var(--rows)] border border-[var(--bodyBackgroundBorder)] rounded-xl p-6 shadow-lg text-center">
+                <h2 className="text-2xl font-semibold mb-4">Chicken / Poultry</h2>
+                <ul className="list-disc list-inside text-left space-y-1">
+                  <li><strong>Whole Chicken</strong></li>
+                  <li><strong>Parts:</strong> Breast, Thigh, Drumstick, Wing</li>
+                  <li><strong>Specialty Cuts:</strong> Tenderloins, Giblets (liver, heart)</li>
+                  <li><strong>Ground/Mince:</strong> Chicken Mince</li>
+                  <li><strong>Other Poultry:</strong> Duck (breast, leg, whole)</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
         </section>
       </ClientLayout>
 
-      {/* FULLSCREEN MODAL — OUTSIDE ClientLayout */}
+      {/* MODAL */}
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black z-[9999] flex items-center justify-center"

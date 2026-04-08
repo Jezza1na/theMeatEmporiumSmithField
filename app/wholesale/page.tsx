@@ -45,7 +45,7 @@ export default function Contact() {
         <section className="w-full overflow-hidden py-16 bg-transparent">
           
           <h1 className="text-4xl font-bold text-center mb-12">
-            Wholesale
+            Specialty Meats
           </h1>
 
           {/* Row 1 */}
@@ -88,10 +88,24 @@ export default function Contact() {
             </div>
           </div>
 
+          
+          {/* WHOLESALE PRICES */}
+          <div className="max-w-6xl mx-auto mt-12 px-4">
+            <div className="bg-[var(--rows)] border border-[var(--bodyBackgroundBorder)] rounded-xl p-6 text-center shadow-lg">
+              <h2 className="text-2xl font-semibold mb-4">Wholesale Prices</h2>
+              <p className="text-lg">
+                Wholesale prices available in-store or contact us at{' '}
+                <a href="Shawn.pynaker@gmail.com" className="text-blue-600 underline">
+                  Shawn.pynaker@gmail.com
+                </a>
+              </p>
+            </div>
+          </div>
+
         </section>
       </ClientLayout>
 
-      {/* FULLSCREEN MODAL — OUTSIDE ClientLayout */}
+      {/* FULLSCREEN MODAL */}
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black z-[9999] flex items-center justify-center"
