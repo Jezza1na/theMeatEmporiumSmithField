@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import ClientLayout from '@/app/ClientLayout';
-import Image from 'next/image';
+import { useState, useEffect } from "react";
+import ClientLayout from "@/app/ClientLayout";
+import Image from "next/image";
 
 const imagesRow1 = [
   "/images/photo1.png",
@@ -23,25 +23,24 @@ export default function Contact() {
 
   useEffect(() => {
     if (selectedImage) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
   }, [selectedImage]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelectedImage(null);
+      if (e.key === "Escape") setSelectedImage(null);
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   return (
     <>
       <ClientLayout>
         <section className="w-full overflow-hidden py-16 bg-transparent">
-          
           <h1 className="text-4xl font-bold text-center mb-12">
             Specialty Meats
           </h1>
@@ -87,21 +86,22 @@ export default function Contact() {
           </div>
 
           {/* ✅ SPECIALTY MEATS BOXES — CENTERED */}
-<div className="max-w-6xl mx-auto mt-16 px-4 flex justify-center">
-  <div className="bg-[var(--rows)] border border-[var(--bodyBackgroundBorder)] rounded-xl p-6 shadow-lg text-center w-full md:w-2/3">
-    <h3 className="text-xl font-semibold mb-4">Specialty Meats</h3>
-    <ul className="list-disc list-inside space-y-1 text-left">
-      <li>Goat / Chevon</li>
-      <li>Venison</li>
-      <li>Rabbit</li>
-      <li>Game Birds: Quail, Pheasant, Partridge</li>
-      <li>Kangaroo</li>
-      <li>Offal / Organ Meats: Liver, Kidney, Heart, Tongue, Tripe</li>
-      <li>Pets Food</li>
-    </ul>
-  </div>
-</div>
-
+          <div className="max-w-6xl mx-auto mt-16 px-4 flex justify-center">
+            <div className="bg-[var(--rows)] border border-[var(--bodyBackgroundBorder)] rounded-xl p-6 shadow-lg text-center w-full md:w-2/3">
+              <h3 className="text-xl font-semibold mb-4">Specialty Meats</h3>
+              <ul className="list-disc list-inside space-y-1 text-left">
+                <li>Goat / Chevon</li>
+                <li>Venison</li>
+                <li>Rabbit</li>
+                <li>Game Birds: Quail, Pheasant, Partridge</li>
+                <li>Kangaroo</li>
+                <li>
+                  Offal / Organ Meats: Liver, Kidney, Heart, Tongue, Tripe
+                </li>
+                <li>Pets Food</li>
+              </ul>
+            </div>
+          </div>
         </section>
       </ClientLayout>
 
@@ -124,13 +124,21 @@ export default function Contact() {
 
       <style jsx global>{`
         @keyframes scroll-left {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
         }
 
         @keyframes scroll-right {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0%); }
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0%);
+          }
         }
 
         .animate-scroll-left {

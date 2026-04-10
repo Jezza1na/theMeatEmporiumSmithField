@@ -1,30 +1,27 @@
-import ClientLayout from '@/app/ClientLayout';
-import Link from 'next/link';
-import React from 'react';
+import ClientLayout from "@/app/ClientLayout";
+import Image from "next/image";
+import Link from "next/link";
+import type { CSSProperties } from "react";
 
 export default function Contact() {
   return (
     <ClientLayout>
       <div style={styles.container}>
-
         {/* VIDEO SECTION */}
         <div style={styles.videoWrapper}>
-          <video
-            src="/video.mp4"
-            controls
-            style={styles.video}
-          />
+          <video src="/video.mp4" controls style={styles.video} />
         </div>
 
         {/* SECTION 1 - IMAGE LEFT / TEXT RIGHT */}
         <div style={styles.section}>
           <div style={styles.imageContainer}>
-            <img src="/about1.jpg" alt="About us" style={styles.image} />
+            <Image src="/about1.jpg" alt="About us" fill sizes="(max-width: 1024px) 100vw, 500px" style={styles.image} />
           </div>
           <div style={styles.textContainer}>
             <h2>Meat our Owners</h2>
             <p>
-              Working their way up from the ground, Cherie and Shawn remain relatable and invested in their local community.
+              Working their way up from the ground, Cherie and Shawn remain
+              relatable and invested in their local community.
             </p>
           </div>
         </div>
@@ -39,64 +36,65 @@ export default function Contact() {
 
           <div style={styles.imageContainer}>
             <Link href="/products" passHref>
-              <img
+              <Image
                 src="/about2.jpg"
                 alt="Products"
-                style={{ ...styles.image, cursor: 'pointer' }}
+                fill
+                sizes="(max-width: 1024px) 100vw, 500px"
+                style={{ ...styles.image, cursor: "pointer" }}
               />
             </Link>
           </div>
         </div>
-
       </div>
     </ClientLayout>
   );
 }
 
 // Define a type for the styles
-const styles: { [key: string]: React.CSSProperties } = {
+const styles: Record<string, CSSProperties> = {
   container: {
-    width: '100%',
-    padding: '40px 20px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '60px',
+    width: "100%",
+    padding: "40px 20px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "60px",
   },
 
   videoWrapper: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
   },
 
   video: {
-    width: '100%',
-    maxWidth: '900px',
-    borderRadius: '12px',
+    width: "100%",
+    maxWidth: "900px",
+    borderRadius: "12px",
   },
 
   section: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '40px',
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "40px",
   },
 
   imageContainer: {
-    flex: '1 1 400px',
-    maxWidth: '500px',
+    flex: "1 1 400px",
+    maxWidth: "500px",
+    position: "relative",
+    minHeight: "280px",
   },
 
   image: {
-    width: '100%',
-    height: 'auto',
-    borderRadius: '12px',
-    objectFit: 'cover',
+    borderRadius: "12px",
+    objectFit: "cover",
   },
 
   textContainer: {
-    flex: '1 1 400px',
-    maxWidth: '500px',
+    flex: "1 1 400px",
+    maxWidth: "500px",
   },
 };

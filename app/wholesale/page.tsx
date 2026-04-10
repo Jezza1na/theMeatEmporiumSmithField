@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import ClientLayout from '@/app/ClientLayout';
-import Image from 'next/image';
+import { useState, useEffect } from "react";
+import ClientLayout from "@/app/ClientLayout";
+import Image from "next/image";
 
 const imagesRow1 = [
   "/images/photo1.png",
@@ -24,26 +24,25 @@ export default function Contact() {
   // Disable scroll + hide layout when modal is open
   useEffect(() => {
     if (selectedImage) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
   }, [selectedImage]);
 
   // Close on ESC
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelectedImage(null);
+      if (e.key === "Escape") setSelectedImage(null);
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   return (
     <>
       <ClientLayout>
         <section className="w-full overflow-hidden py-16 bg-transparent">
-          
           <h1 className="text-4xl font-bold text-center mb-12">
             Specialty Meats
           </h1>
@@ -88,20 +87,21 @@ export default function Contact() {
             </div>
           </div>
 
-          
           {/* WHOLESALE PRICES */}
           <div className="max-w-6xl mx-auto mt-12 px-4">
             <div className="bg-[var(--rows)] border border-[var(--bodyBackgroundBorder)] rounded-xl p-6 text-center shadow-lg">
               <h2 className="text-2xl font-semibold mb-4">Wholesale Prices</h2>
               <p className="text-lg">
-                Wholesale prices available in-store or contact us at{' '}
-                <a href="Shawn.pynaker@gmail.com" className="text-blue-600 underline">
+                Wholesale prices available in-store or contact us at{" "}
+                <a
+                  href="Shawn.pynaker@gmail.com"
+                  className="text-blue-600 underline"
+                >
                   Shawn.pynaker@gmail.com
                 </a>
               </p>
             </div>
           </div>
-
         </section>
       </ClientLayout>
 
@@ -124,13 +124,21 @@ export default function Contact() {
 
       <style jsx global>{`
         @keyframes scroll-left {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
         }
 
         @keyframes scroll-right {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0%); }
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0%);
+          }
         }
 
         .animate-scroll-left {

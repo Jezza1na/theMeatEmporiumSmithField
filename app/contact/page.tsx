@@ -1,20 +1,22 @@
-'use client';
+"use client";
 
-import ClientLayout from '@/app/ClientLayout';
-import { useState } from 'react';
+import ClientLayout from "@/app/ClientLayout";
+import { useState } from "react";
 
 export default function Enqueries() {
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    description: '',
+    name: "",
+    phone: "",
+    email: "",
+    description: "",
   });
   const [files, setFiles] = useState<FileList | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,9 +25,12 @@ export default function Enqueries() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ ...formData, files: files ? Array.from(files).map(f => f.name) : [] });
-    alert('Enquiry submitted!');
-    setFormData({ name: '', phone: '', email: '', description: '' });
+    console.log({
+      ...formData,
+      files: files ? Array.from(files).map((f) => f.name) : [],
+    });
+    alert("Enquiry submitted!");
+    setFormData({ name: "", phone: "", email: "", description: "" });
     setFiles(null);
   };
 
@@ -34,7 +39,9 @@ export default function Enqueries() {
       <div className="wrap">
         <div className="card">
           <h2 className="title">Enquiries</h2>
-          <p className="sub">Fill in your details and upload photos — we’ll get back to you soon.</p>
+          <p className="sub">
+            Fill in your details and upload photos — we’ll get back to you soon.
+          </p>
 
           <form onSubmit={handleSubmit} className="form">
             {/* Row 1 */}
@@ -83,10 +90,20 @@ export default function Enqueries() {
 
                 {/* Pretty file input */}
                 <div className="fileRow">
-                  <input id="photos" type="file" multiple accept="image/*" onChange={handleFileChange} />
-                  <label htmlFor="photos" className="fileBtn">Choose files</label>
+                  <input
+                    id="photos"
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    onChange={handleFileChange}
+                  />
+                  <label htmlFor="photos" className="fileBtn">
+                    Choose files
+                  </label>
                   <span className="fileNote">
-                    {files && files.length > 0 ? `${files.length} selected` : 'No file chosen'}
+                    {files && files.length > 0
+                      ? `${files.length} selected`
+                      : "No file chosen"}
                   </span>
                 </div>
               </label>
@@ -105,7 +122,9 @@ export default function Enqueries() {
               />
             </label>
 
-            <button type="submit" className="submit">Submit Enquiry</button>
+            <button type="submit" className="submit">
+              Submit Enquiry
+            </button>
           </form>
         </div>
       </div>
@@ -122,7 +141,7 @@ export default function Enqueries() {
           background: var(--rows);
           border: 1px solid var(--bodyBackgroundBorder);
           border-radius: 16px;
-          box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
           padding: 2rem clamp(1rem, 3vw, 2rem);
         }
         .title {
@@ -149,7 +168,9 @@ export default function Enqueries() {
           gap: 1rem;
         }
         @media (max-width: 760px) {
-          .row { grid-template-columns: 1fr; }
+          .row {
+            grid-template-columns: 1fr;
+          }
         }
 
         .field {
@@ -172,14 +193,20 @@ export default function Enqueries() {
           border-radius: 12px;
           padding: 0.7rem 0.9rem;
           outline: none;
-          transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+          transition:
+            border-color 0.15s ease,
+            box-shadow 0.15s ease,
+            background 0.15s ease;
         }
-        input::placeholder, textarea::placeholder {
+        input::placeholder,
+        textarea::placeholder {
           color: color-mix(in oklab, var(--textColour) 55%, transparent);
         }
-        input:focus, textarea:focus {
+        input:focus,
+        textarea:focus {
           border-color: var(--linkColour);
-          box-shadow: 0 0 0 3px color-mix(in oklab, var(--linkColour) 25%, transparent);
+          box-shadow: 0 0 0 3px
+            color-mix(in oklab, var(--linkColour) 25%, transparent);
         }
 
         /* File input visuals */
@@ -203,11 +230,22 @@ export default function Enqueries() {
           padding: 0.55rem 0.9rem;
           cursor: pointer;
           font-weight: 600;
-          transition: transform .08s ease, box-shadow .15s ease, filter .15s ease;
+          transition:
+            transform 0.08s ease,
+            box-shadow 0.15s ease,
+            filter 0.15s ease;
         }
-        .fileBtn:hover { box-shadow: 0 6px 18px rgba(0,0,0,0.15); transform: translateY(-1px); }
-        .fileBtn:active { transform: translateY(0); box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
-        .fileNote { opacity: 0.8; }
+        .fileBtn:hover {
+          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+          transform: translateY(-1px);
+        }
+        .fileBtn:active {
+          transform: translateY(0);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+        .fileNote {
+          opacity: 0.8;
+        }
 
         .submit {
           margin-top: 0.4rem;
@@ -218,10 +256,19 @@ export default function Enqueries() {
           padding: 0.9rem 1.1rem;
           cursor: pointer;
           font-weight: 700;
-          transition: transform .08s ease, box-shadow .15s ease, filter .15s ease;
+          transition:
+            transform 0.08s ease,
+            box-shadow 0.15s ease,
+            filter 0.15s ease;
         }
-        .submit:hover { box-shadow: 0 10px 24px rgba(0,0,0,0.18); transform: translateY(-1px); }
-        .submit:active { transform: translateY(0); box-shadow: 0 4px 12px rgba(0,0,0,0.14); }
+        .submit:hover {
+          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+          transform: translateY(-1px);
+        }
+        .submit:active {
+          transform: translateY(0);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+        }
       `}</style>
     </ClientLayout>
   );

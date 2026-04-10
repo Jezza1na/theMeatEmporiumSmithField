@@ -1,93 +1,111 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
-import Header from "./components/header";
-import Navbar from "./components/navBar";
+import NavBar from "./components/navBar";
+import ClientLayout from "./ClientLayout";
 
 export const metadata: Metadata = {
   title: "The Meat Emporium SmithField",
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  const currentDate = new Date().toLocaleDateString();
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const currentYear = new Date().getFullYear();
-
-  const styles = {
-    footer: {
-      padding: "1.5rem 0",
-      backgroundColor: "#000",
-      color: "#fff",
-      textAlign: "center" as const,
-    },
-  };
 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <style>{`:root{--header:150px;--tabs:60px;}`}</style>
         <style>{`
+          :root {
+            --header: 200px;
+            --tabs: 60px;
+          }
+
           html, body {
             margin: 0;
             padding: 0;
-            background-color: var(--bodyBackground, #ffffff);
+            width: 100%;
+            overflow-x: hidden;
+            background: var(--bodyBackground, #fff);
             color: var(--textColour, #212529);
           }
-          * { border-color: var(--bodyBackgroundBorder, #dee2e6); }
-          a { color: var(--linkColour, #0d6efd); }
+
+          * {
+            box-sizing: border-box;
+            border-color: var(--bodyBackgroundBorder, #dee2e6);
+          }
+
+          a {
+            color: var(--linkColour, #0d6efd);
+            text-decoration: none;
+          }
         `}</style>
-
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{
-              var saved=localStorage.getItem('dark_mode');
-              if(saved==='true'){
-                var root=document.documentElement;
-                root.style.setProperty('--dropDown','#1b1b1b');
-                root.style.setProperty('--dropDownBorder','#2a2a2a');
-
-                root.style.setProperty('--bodyBackground','#222222');
-                root.style.setProperty('--textColour','#f8f9fa');
-                root.style.setProperty('--bodyBackgroundBorder','#2a2a2a');
-                root.style.setProperty('--linkColour','#6ab0ff');
-
-                root.style.setProperty('--headerBackground','#111');
-                root.style.setProperty('--rows','#000');
-                root.style.setProperty('--tabColour','#30363d');
-                root.style.setProperty('--tabText','#ffffff');
-              }
-            }catch(e){}})();`,
-          }}
-        />
       </head>
 
       <body>
-  <div
-    style={{
-      minHeight: "100vh",
-      display: "flex",
-      flexDirection: "column",
-    }}
-  >
-    <Header />   {/* 👈 NOT sticky */}
-    <Navbar />   {/* 👈 sticky */}
+        <div
+          style={{
+            minHeight: "100vh",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <header
+            style={{
+              width: "100%",
+              height: "200px",
+              background: "var(--headerBackground, #000)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Image
+              src="/images/GoldLogoTheMeatEmporiumBanner.png"
+              alt="The Meat Emporium Smithfield"
+              width={1200}
+              height={320}
+              priority
+              style={{
+                maxHeight: "190px",
+                width: "auto",
+                maxWidth: "90%",
+                objectFit: "contain",
+              }}
+            />
+          </header>
 
-    <main
-      style={{
-        flexGrow: 1,
-        paddingLeft: 20,
-        paddingRight: 20,
-      }}
-    >
-      {children}
-    </main>
+          <NavBar />
 
-    <footer style={styles.footer}>
-      © {currentYear} The Meat Emporium Smithfield
-    </footer>
-  </div>
-</body>
+          <ClientLayout>
+            <main
+              style={{
+                flexGrow: 1,
+                width: "100%",
+                padding: "20px 20px 0",
+              }}
+            >
+              {children}
+            </main>
+          </ClientLayout>
+
+          <footer
+            style={{
+              width: "100%",
+              padding: "1.5rem 0",
+              backgroundColor: "#000000",
+              color: "#fff",
+              textAlign: "center",
+            }}
+          >
+            © {currentYear} The Meat Emporium Smithfield
+          </footer>
+        </div>
+      </body>
     </html>
   );
-};
-
-export default RootLayout;
+}

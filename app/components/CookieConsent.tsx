@@ -1,22 +1,15 @@
-'use client';
-{/*Chat GPT help with the developing the cookies, problems with actually getting them to remember the page */}
-import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
-import Cookies from 'js-cookie';
+"use client";
+import { useState } from "react";
+import Cookies from "js-cookie";
 
 export default function CookieConsent() {
-  const pathname = usePathname();
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    const consent = Cookies.get('cookie_consent');
-    setShow(consent !== 'true');
-  }, [pathname]);
+  const [accepted, setAccepted] = useState(false);
+  const show = !accepted && Cookies.get("cookie_consent") !== "true";
 
   const acceptCookies = () => {
-    Cookies.set('cookie_consent', 'true', { expires: 30 });
-    Cookies.set('last_location', window.location.pathname, { expires: 30 });
-    setShow(false);
+    Cookies.set("cookie_consent", "true", { expires: 30 });
+    Cookies.set("last_location", window.location.pathname, { expires: 30 });
+    setAccepted(true);
   };
 
   if (!show) return null;
@@ -27,14 +20,14 @@ export default function CookieConsent() {
       aria-live="polite"
       aria-label="Cookie consent"
       style={{
-        position: 'fixed',
+        position: "fixed",
         bottom: 0,
         left: 0,
-        width: '100%',
+        width: "100%",
         zIndex: 9999,
-        background: 'var(--bodyBackground)',
-        color: 'var(--textColour)',
-        borderTop: '1px solid var(--bodyBackgroundBorder)',
+        background: "var(--bodyBackground)",
+        color: "var(--textColour)",
+        borderTop: "1px solid var(--bodyBackgroundBorder)",
       }}
     >
       <div className="d-flex justify-content-between align-items-center px-3 py-2">

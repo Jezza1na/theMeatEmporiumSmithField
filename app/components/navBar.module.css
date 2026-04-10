@@ -1,4 +1,7 @@
-/* HEADER (hero image/logo) */
+/* =========================
+   HEADER (hero image/logo)
+========================= */
+
 .header {
   position: relative;
   width: 100%;
@@ -9,18 +12,17 @@
   background: var(--headerBackground);
   overflow: hidden;
 }
+
 /* LOGO */
-/* Default (desktop) */
 .logoImage {
   width: auto;
   height: auto;
   max-width: 60%;
   max-height: 220px;
   object-fit: contain;
-  margin-top: 20px; /* adjust vertical position */
+  margin-top: 20px;
 }
 
-/* Large laptops/desktops */
 @media (max-width: 1440px) {
   .logoImage {
     max-width: 50%;
@@ -29,7 +31,6 @@
   }
 }
 
-/* Tablets */
 @media (max-width: 1024px) {
   .logoImage {
     max-width: 60%;
@@ -38,7 +39,6 @@
   }
 }
 
-/* Small tablets / large phones */
 @media (max-width: 768px) {
   .logoImage {
     max-width: 70%;
@@ -47,12 +47,11 @@
   }
 }
 
-/* Phones */
 @media (max-width: 480px) {
   .logoImage {
     max-width: 90%;
     max-height: 120px;
-    margin-top: 0px;
+    margin-top: 0;
   }
 }
 
@@ -64,70 +63,78 @@
   max-width: 100%;
 }
 
+/* =========================
+   NAVBAR
+========================= */
 
-/* NAVBAR */
+.navBar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .topRow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: var(--rows);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  z-index: 9999;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-.hidden {
-  transform: translateY(-100%);
-  opacity: 0;
-}
-
-.visible {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-/* static navbar under header */
-.topRowStatic {
   position: relative;
-  top: 0;
-  left: 0;
   width: 100%;
-  background: var(--rows);
+  height: 60px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  z-index: 1;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: var(--rows);
+  z-index: 1200;
 }
 
-/* sticky class added via JS */
-.sticky {
+.topRowFixed {
   position: fixed;
   top: 0;
   left: 0;
-  background: var(--rows);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  right: 0;
+  z-index: 3000;
 }
 
-/* TABS */
-.tabs { 
-  display: flex; 
-  gap: 12px; 
+.topRowStuck {
+  border-bottom: 1px solid var(--bodyBackgroundBorder);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
-.tabLink { text-decoration: none; }
+.stickySpacer {
+  height: 60px;
+  width: 100%;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+/* =========================
+   TABS
+========================= */
+
+.tabs {
+  display: flex;
+  gap: 12px;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: visible;
+  flex-wrap: nowrap;
+}
+
+.tabLink {
+  text-decoration: none;
+}
 
 .tab {
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 8px 16px;
   border-radius: 6px;
+  white-space: nowrap;
+
   font-weight: 700;
+  font-size: clamp(0.72rem, 1vw, 0.95rem);
   background: var(--tabColour);
   color: var(--tabText);
   cursor: pointer;
@@ -136,21 +143,24 @@
 .tabLink:hover .tab,
 .tab:hover {
   background: color-mix(in srgb, var(--tabColour) 85%, var(--textColour) 15%);
-  border-color: color-mix(in srgb, var(--dropDownBorder) 85%, var(--textColour) 15%);
 }
 
 .tab:active {
   transform: translateY(1px);
 }
 
-/* RIGHT SIDE */
+/* =========================
+   RIGHT SIDE
+========================= */
+
 .rightSide {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
+  position: relative;
 }
 
-/* SOCIALS */
 .socials {
   display: flex;
   align-items: center;
@@ -172,77 +182,97 @@
   transform: scale(1.1);
 }
 
-/* HAMBURGER */
-.container { 
-  position: relative; 
-}
+/* =========================
+   HAMBURGER
+========================= */
 
 .hamburger {
-  width: 30px; 
+  width: 30px;
   height: 30px;
-  display: inline-flex; 
-  flex-direction: column; 
-  justify-content: center; 
+
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
   gap: 5px;
+
   background: none;
   border: none;
+  cursor: pointer;
 }
 
-.bar, .barOpen {
-  height: 3px; 
+.hamburgerWrap {
+  position: relative;
+  z-index: 3100;
+}
+
+.bar {
+  height: 3px;
   width: 100%;
   background: var(--tabText);
   transition: all 0.3s ease;
 }
 
-.hamburger:focus-visible { 
-  outline: 2px solid var(--linkColour); 
-  outline-offset: 2px; 
-}
-
-/* ANIMATION */
-.barOpen:nth-child(1) {
+/* FIXED hamburger animation (correct way) */
+.barOpen1 {
   transform: rotate(45deg) translate(5px, 5px);
 }
 
-.barOpen:nth-child(2) {
+.barOpen2 {
   opacity: 0;
 }
 
-.barOpen:nth-child(3) {
+.barOpen3 {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* MENU */
+.hamburger:focus-visible {
+  outline: 2px solid var(--linkColour);
+  outline-offset: 2px;
+}
+
+/* =========================
+   MENU
+========================= */
+
 .menu,
 .menuOpen {
-  position: absolute;   /* ✅ KEY CHANGE */
-  top: 100%;            /* sit directly under navbar */
+  position: absolute;
+  top: 100%;
   right: 0;
 
   width: min(280px, 90vw);
+
   background: var(--dropDown);
   border: 1px solid var(--dropDownBorder);
   border-radius: 10px;
+
   overflow: hidden;
-  transition: all 0.3s ease;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  will-change: transform, opacity;
+  z-index: 3200;
 }
 
 .menu {
-  visibility: hidden;
   opacity: 0;
   transform: translateY(-8px);
   pointer-events: none;
+  visibility: hidden;
 }
 
 .menuOpen {
-  visibility: visible;
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+  visibility: visible;
 }
 
-/* MENU LIST */
+/* =========================
+   MENU LIST
+========================= */
+
 .menuList {
   margin: 0;
   padding: 8px 0;
@@ -256,106 +286,214 @@
   text-decoration: none;
 }
 
-.menuLink:hover { 
-  background: rgba(0, 0, 0, .1); 
+.menuLink:hover {
+  background: rgba(0, 0, 0, 0.1);
 }
 
-/* TOGGLE */
+/* =========================
+   TOGGLE
+========================= */
+
 .toggleRow {
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   justify-content: space-between;
+
   gap: 10px;
   padding: 10px 16px;
+
   border-top: 1px solid var(--dropDownBorder);
 }
 
 /* SWITCH */
 .switch {
-  position: relative; 
-  display: inline-block;
-  width: 40px; 
+  position: relative;
+  width: 40px;
   height: 22px;
+  display: inline-block;
 }
 
-.switch > input {
-  opacity: 0; 
-  width: 0; 
-  height: 0; 
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
   position: absolute;
 }
 
 .track {
-  position: absolute; 
+  position: absolute;
   inset: 0;
   background: #ccc;
   border-radius: 20px;
-  transition: background .3s;
+  transition: background 0.3s;
 }
 
 .thumb {
-  position: absolute; 
-  bottom: 3px; 
+  position: absolute;
+  bottom: 3px;
   left: 2px;
-  height: 16px; 
+
+  height: 16px;
   width: 16px;
+
   background: #fff;
   border-radius: 50%;
-  transition: left .3s;
+
+  transition: left 0.3s;
 }
 
-.switch input:checked + .track { 
-  background: green; 
+.switch input:checked + .track {
+  background: green;
 }
 
-.switch input:checked ~ .thumb { 
-  left: 22px; 
+.switch input:checked ~ .thumb {
+  left: 22px;
 }
 
-/* SMOOTH SCROLL */
+/* =========================
+   SMOOTH SCROLL
+========================= */
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Tabs for smaller devices: wrap if needed */
-@media (max-width: 1024px) {
-  .tabs {
-    gap: 8px;
-    flex-wrap: wrap; /* allow wrapping on tablets */
-    justify-content: center;
-  }
-  .tab {
-    font-size: 0.9rem;
-    padding: 0.3rem 0.6rem;
-  }
+/* =========================
+   GRID
+========================= */
+
+.fourGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  padding: 4rem 2rem;
 }
 
-/* Tablets */
-@media (max-width: 768px) {
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1024px) {
+  .topRow {
+    height: auto;
+    min-height: 56px;
+    padding: 10px 16px;
+    gap: 8px;
+  }
+
+  .rightSide {
+    gap: 10px;
+  }
+
+  .socials {
+    gap: 10px;
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+
   .tabs {
     gap: 6px;
     flex-wrap: wrap;
     justify-content: center;
   }
+
   .tab {
-    font-size: 0.85rem;
-    padding: 0.25rem 0.5rem;
-    flex: 1 1 calc(50% - 10px); /* two tabs per row */
-    min-width: 120px;
+    font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+    padding: 8px 12px;
+  }
+
+  .fourGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Phones */
-@media (max-width: 480px) {
-  .tabs {
-    gap: 4px;
-    flex-wrap: wrap;
-    justify-content: center;
+@media (max-width: 768px) {
+  .topRow {
+    height: auto;
+    min-height: 52px;
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 8px;
+    align-items: center;
   }
-  .tab {
-    font-size: 0.8rem;
-    padding: 0.2rem 0.4rem;
-    flex: 1 1 100%; /* full width tabs */
+
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
     min-width: 0;
+    width: 100%;
+    margin-top: 0;
+    order: 0;
+  }
+
+  .rightSide {
+    width: auto;
+    justify-content: flex-end;
+    order: 0;
+    margin-left: 0;
+    align-self: center;
+  }
+
+  .icon {
+    font-size: 18px;
+  }
+
+  .menu,
+  .menuOpen {
+    width: min(240px, 88vw);
+  }
+
+  .fourGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .topRow {
+    height: auto;
+    min-height: 50px;
+    padding: 12px 12px;
+  }
+
+  .tabs {
+    gap: 5px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .tab {
+    font-size: clamp(0.62rem, 2.8vw, 0.74rem);
+    padding: 5px 6px;
+  }
+
+  .rightSide {
+    gap: 8px;
+    align-self: center;
+  }
+
+  .socials {
+    gap: 6px;
+  }
+
+  .socials {
+    gap: 6px;
+  }
+
+  .icon {
+    font-size: 16px;
+  }
+
+  .hamburger {
+    width: 28px;
+    height: 28px;
+  }
+
+  .bar {
+    height: 2px;
   }
 }
